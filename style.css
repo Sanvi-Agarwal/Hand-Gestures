@@ -4,7 +4,7 @@ body {
 }
 
 span {
-    font-size: 30px;
+    font-size: 20px;
 }
 
 #camera,
@@ -12,6 +12,7 @@ span {
     border: 2px dashed black;
     width: 350px;
     height: 300px;
+    margin: auto;
 }
 
 #result_emotion_name,

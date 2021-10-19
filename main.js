@@ -25,6 +25,39 @@ function check() {
     classifier.classify(img, gotResult);
 }
 
+function gotResult(error, results) {
+    if (error) {
+        console.error(error);
+    } else {
+        console.log(results);
+
+        document.getElementById("result_emotion_name").innerHTML = results[0].label;
+
+        gesture = results[0].label;
+
+        toSpeak = "";
+
+        if (gesture == "Victory") {
+            toSpeak = "That was a marvelous victory!!";
+            document.getElementById("result_object_gesture_icon").innerHTML = "&#9996;";
+        } else if (gesture == "Best") {
+            toSpeak = "All The Best!!";
+            document.getElementById("result_object_gesture_icon").innerHTML = "&#128077;";
+        } else if (gesture == "Okay") {
+            toSpeak = "This is Ok!";
+            document.getElementById("result_object_gesture_icon").innerHTML = "&#128076;";
+        } else if (gesture == "Yo") {
+            toSpeak = "Yo! Whats up?";
+            document.getElementById("result_object_gesture_icon").innerHTML = "&#129304;";
+        } else if (gesture == "Lose") {
+            toSpeak = "You are a Loser!";
+            document.getElementById("result_object_gesture_icon").innerHTML = "&#128078;";
+        }
+
+        speak();
+    }
+}
+
 function speak() {
     var synth = window.speechSynthesis;
     speak_data = toSpeak;
